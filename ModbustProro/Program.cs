@@ -12,12 +12,16 @@ namespace ModbustProro
             e.Connect("10.8.4.160", 502);
 
             // Register col is col -1 
-
              e.WriteSingleRegister(1, 12);
+
+            // 3 for enable alarms, 1 for disable
+             e.WriteSingleRegister(3009, 3);
+             e.WriteSingleRegister(3011, 3);
+
             //e.WriteSingleRegister(31, 30000);
 
             //bool[] readCoils = e.ReadCoils(30, 1);
-            int[] readHoldingRegisters = e.ReadHoldingRegisters(26, 20);    //Read 10 Holding Registers from Server, starting with Address 1
+            int[] readHoldingRegisters = e.ReadHoldingRegisters(3008, 5);    //Read 10 Holding Registers from Server, starting with Address 1
 
             // Console Output
             //for (int i = 0; i < readCoils.Length; i++)
